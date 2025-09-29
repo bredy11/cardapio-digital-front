@@ -31,6 +31,7 @@ ViewModel → Lógica de negócio e estado (composables e Pinia), que conecta Mo
 
 A hierarquia de pacotes é organizada por módulos/funcionalidades:
 
+```bash
 src/
  ├─ assets/                  # Imagens, ícones, fontes
  ├─ components/              # Componentes globais reutilizáveis
@@ -40,11 +41,11 @@ src/
  ├─ store/                   # Pinia stores (estado global)
  ├─ views/                   # Telas principais (organizadas por módulo)
  │   ├─ restaurante/
- │   │    
+ │   │    # Telas do restaurante (CRUD de restaurantes)
  │   ├─ cardapio/
- │   │    
+ │   │    # Telas de cardápio (CRUD de pratos e menus)
  │   └─ cliente/
- │     
+ │        # Telas de visualização do cliente (menu público)
  ├─ router/                  # Configuração do Vue Router
  │   └─ index.js
  ├─ App.vue
