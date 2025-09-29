@@ -1,7 +1,7 @@
 import { ref } from 'vue';
 import { useToast } from 'primevue/usetoast';
-import { Usuario } from '@/models/usuario';
-import { usuarioService } from '@/services/usuarioService';
+import { Usuario } from '../models/usuario';
+import { usuarioService } from '../services/usuarioService';
 
 export function useUsuario() {
   const usuario = ref(new Usuario());

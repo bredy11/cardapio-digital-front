@@ -3,8 +3,7 @@
     <div class="grid grid-nogutter">
       <!-- Coluna da Esquerda: Banner -->
       <div class="col-12 md:col-6 banner-container">
-        <img src="@/assets/banner.jpg" alt="Banner" class="banner-image" />
-      </div>
+       </div>
 
       <!-- Coluna da Direita: Formulário de Cadastro -->
       <div class="col-12 md:col-6 form-container">
@@ -41,7 +40,7 @@
 import InputText from 'primevue/inputtext';
 import Password from 'primevue/password';
 import Button from 'primevue/button';
-import { useUsuario } from '@/composables/useUsuario';
+import { useUsuario } from '../../composables/useUsuario';
 
 const { usuario, cadastrar } = useUsuario();
 </script>

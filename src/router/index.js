@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import CadastroUsuarioView from '@/views/usuario/CadastroUsuarioView.vue';
+import CadastroUsuarioView from '../views/usuario/CadastroUsuarioView.vue';
 
 const routes = [
   {
