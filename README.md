@@ -1,5 +1,3 @@
-# cardapio-digital-front
-
 🍽️ Cardápio Digital Multirestaurante
 
 Este projeto tem como objetivo desenvolver um sistema de cardápio digital para múltiplos restaurantes.
@@ -42,27 +40,12 @@ src/
  ├─ store/                   # Pinia stores (estado global)
  ├─ views/                   # Telas principais (organizadas por módulo)
  │   ├─ restaurante/
- │   │   ├─ RestauranteView.vue
- │   │   └─ EditarRestauranteView.vue
+ │   │    
  │   ├─ cardapio/
- │   │   ├─ CardapioView.vue
- │   │   └─ EditarPratoView.vue
+ │   │    
  │   └─ cliente/
- │       └─ ClienteCardapioView.vue
+ │     
  ├─ router/                  # Configuração do Vue Router
  │   └─ index.js
  ├─ App.vue
  └─ main.js
-
-🎨 UI com PrimeVue
-
-Será utilizada a biblioteca PrimeVue para acelerar o desenvolvimento da interface.
-Exemplos de uso:
-
-DataTable → Listagem de pratos e cardápios
-
-Dialog → Formulário de cadastro/edição
-
-Card → Exibir informações de pratos/restaurantes
-
-Toast → Exibir mensagens de feedback
