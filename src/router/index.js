@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import CadastroUsuarioView from '../views/usuario/CadastroUsuarioView.vue';
+import HomeView from '../views/HomeView.vue';
 
 const routes = [
   {
@@ -7,10 +8,10 @@ const routes = [
     name: 'CadastroUsuario',
     component: CadastroUsuarioView,
   },
-  // Redirect root to the registration page for now
   {
     path: '/',
-    redirect: '/cadastro',
+    name: 'Home',
+    component: HomeView,
   },
 ];
 
