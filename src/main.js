@@ -5,14 +5,13 @@ import ToastService from 'primevue/toastservice';
 import PrimeVue from 'primevue/config';
 import Aura from '@primeuix/themes/aura';
 
-
-
- 
+// Icon CSS file
+import 'primeicons/primeicons.css';
+import 'primeflex/primeflex.css';
 
 const app = createApp(App);
 
 app.use(router);
-app.use(PrimeVue);
 app.use(ToastService);
 
 app.use(PrimeVue, {
