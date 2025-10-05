@@ -1,7 +1,4 @@
 <template>
-  <link rel="stylesheet" href="https://unpkg.com/primevue/resources/themes/lara-light-blue/theme.css">
-  <link rel="stylesheet" href="https://unpkg.com/primevue/resources/primevue.min.css">
-  <link rel="stylesheet" href="https://unpkg.com/primeicons/primeicons.css">
   <div id="app">
     <Toast />
     <router-view />
