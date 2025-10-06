@@ -17,7 +17,7 @@
             </div>
             <Button label="Entrar" class="p-button-lg p-button-success" />
             <div class="signup-link">
-              <p>Não tem conta? <a href="#">Cadastre-se aqui</a></p>
+              <p>Não tem conta? <a href="/cadastro">Cadastre-se aqui</a></p>
             </div>
           </div>
         </div>
