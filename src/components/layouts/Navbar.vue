@@ -16,7 +16,9 @@
     </template>
 
     <template #end>
-      <i class="pi pi-user profile-icon"></i>
+      <router-link to="/login">
+        <i class="pi pi-user profile-icon"></i>
+      </router-link>
     </template>
   </Toolbar>
 </template>
