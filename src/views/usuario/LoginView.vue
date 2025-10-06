@@ -1,17 +1,5 @@
 <template>
-  <div class="login-page">
-    <div class="grid grid-nogutter">
-      <div class="col-6">
-        <div class="banner-container">
-          <img src="@/assets/images/login_banner.png" alt="Banner Login" class="banner-image">
-          <div class="banner-overlay">
-            <div class="banner-text">
-              <h2>Peça Aqui</h2>
-              <p>Conectando você aos sabores que você ama.</p>
-            </div>
-          </div>
-        </div>
-      </div>
+ <AuthLayout>
       <div class="col-6">
         <div class="login-form-container">
           <div class="login-form">
@@ -34,14 +22,15 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
+   </AuthLayout>
 </template>
 
 <script setup>
 import InputText from 'primevue/inputtext';
 import Password from 'primevue/password';
 import Button from 'primevue/button';
+import AuthLayout from '@/components/layouts/AuthLayout.vue';
+
 </script>
 
 <style lang="scss" scoped>
