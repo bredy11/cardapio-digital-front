@@ -2,9 +2,14 @@ import { createRouter, createWebHistory } from 'vue-router';
 import CadastroUsuarioView from '../views/usuario/CadastroUsuarioView.vue';
 import LoginView from '../views/usuario/LoginView.vue';
 import HomeView from '../views/HomeView.vue';
-import CadastroRestauranteView from '../views/restaurante/CadastroRestauranteView.vue';
+import DashboardView from '../views/DashboardView.vue';
 
 const routes = [
+  {
+    path: '/dashboard',
+    name: 'Dashboard',
+    component: DashboardView,
+  },
   {
     path: '/login',
     name: 'Login',
