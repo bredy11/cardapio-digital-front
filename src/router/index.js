@@ -3,6 +3,7 @@ import CadastroUsuarioView from '../views/usuario/CadastroUsuarioView.vue';
 import LoginView from '../views/usuario/LoginView.vue';
 import HomeView from '../views/HomeView.vue';
 import DashboardView from '../views/DashboardView.vue';
+import CadastroRestauranteView from '../views/restaurante/CadastroRestauranteView.vue';
 
 const routes = [
   {
