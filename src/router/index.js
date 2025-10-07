@@ -25,6 +25,11 @@ const routes = [
     name: 'Home',
     component: HomeView,
   },
+  {
+    path: '/restaurantes/novo',
+    name: 'CadastroRestaurante',
+    component: CadastroRestauranteView,
+  },
 ];
 
 const router = createRouter({
