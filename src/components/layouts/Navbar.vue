@@ -1,10 +1,12 @@
 <template>
   <Toolbar class="navbar">
     <template #start>
-      <div class="logo-container">
-        <img src="@/assets/logo.png" alt="Logo" class="logo-img" />
-        <span class="logo-text">Peça Aqui</span>
-      </div>
+      <router-link to="/" class="logo-container-link">
+        <div class="logo-container">
+          <img src="@/assets/logo.png" alt="Logo" class="logo-img" />
+          <span class="logo-text">Peça Aqui</span>
+        </div>
+      </router-link>
     </template>
 
     <template #center>
@@ -47,6 +49,10 @@ defineProps({
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   border: none;
   color: #ffffff;
+}
+
+.logo-container-link {
+  text-decoration: none;
 }
 
 .logo-container {
