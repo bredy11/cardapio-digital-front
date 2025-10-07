@@ -7,11 +7,6 @@ import CadastroRestauranteView from '../views/restaurante/CadastroRestauranteVie
 
 const routes = [
   {
-    path: '/dashboard',
-    name: 'Dashboard',
-    component: DashboardView,
-  },
-  {
     path: '/login',
     name: 'Login',
     component: LoginView,
