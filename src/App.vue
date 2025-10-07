@@ -14,9 +14,12 @@ import Toast from 'primevue/toast';
 import Navbar from '@/components/layouts/Navbar.vue';
 
 const navItems = ref([
-  { label: 'Meus Pedidos', to: '/orders' },
-  { label: 'Ajuda', to: '/help' },
-  { label: 'Para Restaurantes', to: '/for-restaurants' }
+  { label: 'Meus Restaurantes', to: '/restaurants' },
+  { label: 'Cardápios', to: '/menus' },
+  { label: 'Pedidos', to: '/orders' },
+  { label: 'Financeiro', to: '/financial' },
+  { label: 'Analytics', to: '/analytics' },
+  { label: 'Configurações', to: '/settings' }
 ]);
 </script>
 
