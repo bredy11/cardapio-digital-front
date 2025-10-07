@@ -1,9 +1,12 @@
 import { createApp } from 'vue';
 import App from './App.vue';
-import router from './router'; 
+import router from './router';
 import ToastService from 'primevue/toastservice';
 import PrimeVue from 'primevue/config';
 import Aura from '@primeuix/themes/aura';
+
+// Style file
+import '@/assets/styles.scss';
 
 // Icon CSS file
 import 'primeicons/primeicons.css';
