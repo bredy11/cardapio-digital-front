@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import CadastroUsuarioView from '../views/usuario/CadastroUsuarioView.vue';
 import LoginView from '../views/usuario/LoginView.vue';
 import HomeView from '../views/HomeView.vue';
+import CadastroRestauranteView from '../views/restaurante/CadastroRestauranteView.vue';
 
 const routes = [
   {
@@ -18,6 +19,11 @@ const routes = [
     path: '/',
     name: 'Home',
     component: HomeView,
+  },
+  {
+    path: '/restaurantes/novo',
+    name: 'CadastroRestaurante',
+    component: CadastroRestauranteView,
   },
 ];
 
