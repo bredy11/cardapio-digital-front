@@ -15,7 +15,7 @@
             <div class="forgot-password">
               <a href="#">Esqueceu de senha?</a>
             </div>
-            <Button label="Entrar" class="p-button-lg p-button-success" />
+            <Button label="Entrar" class="p-button-lg p-button-success" @click="login" />
             <div class="signup-link">
               <p>Não tem conta? <a href="/cadastro">Cadastre-se aqui</a></p>
             </div>
@@ -30,7 +30,14 @@ import InputText from 'primevue/inputtext';
 import Password from 'primevue/password';
 import Button from 'primevue/button';
 import AuthLayout from '@/components/layouts/AuthLayout.vue';
+import { useRouter } from 'vue-router';
 
+const router = useRouter();
+
+const login = () => {
+  // Simulate login logic
+  router.push('/dashboard');
+};
 </script>
 
 <style lang="scss" scoped>

@@ -59,7 +59,7 @@
             <!-- Upload de Imagem -->
             <div class="col-12"><Divider align="left"><h3>Imagem do Restaurante</h3></Divider></div>
             <div class="field col-12">
-              <FileUpload name="restaurantImage" @uploader="onImageSelect" :multiple="false" accept="image/*" :maxFileSize="1000000" customUpload>
+              <FileUpload name="restaurantImage[]" :multiple="false" accept="image/*" :maxFileSize="1000000">
                   <template #empty>
                       <p>Arraste ou solte o clique para selecionar uma imagem.</p>
                   </template>
@@ -99,7 +99,7 @@
           <h3 class="preview-title">Visualização em Tempo Real</h3>
 
           <div class="preview-content">
-            <img :src="imagePreviewUrl" alt="Preview da imagem" class="preview-image" />
+            <img src="https://via.placeholder.com/400x200.png?text=Imagem+do+Restaurante" alt="Preview da imagem" class="preview-image" />
 
             <div class="preview-info">
               <h4 class="restaurant-name">{{ form.name || 'Nome do Restaurante' }}</h4>
@@ -158,14 +158,6 @@ const removeSocialLink = (index) => {
   form.value.socialLinks.splice(index, 1);
 };
 
-const imagePreviewUrl = ref('https://via.placeholder.com/400x200.png?text=Imagem+do+Restaurante');
-
-const onImageSelect = (event) => {
-  const file = event.files[0];
-  if (file) {
-    imagePreviewUrl.value = URL.createObjectURL(file);
-  }
-};
 </script>
 
 <style lang="scss" scoped>
