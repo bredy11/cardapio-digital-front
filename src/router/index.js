@@ -3,7 +3,8 @@ import CadastroUsuarioView from '../views/usuario/CadastroUsuarioView.vue';
 import LoginView from '../views/usuario/LoginView.vue';
 import HomeView from '../views/HomeView.vue';
 import DashboardView from '../views/DashboardView.vue';
-import CadastroRestauranteView from '../views/restaurante/CadastroRestauranteView.vue';
+import RegisterRestaurantView from '../views/restaurante/RegisterRestaurantView.vue';
+import HomeUsuarioView from '../views/usuario/HomeUsuarioView.vue';
 
 const routes = [
   {
@@ -27,10 +28,15 @@ const routes = [
     component: HomeView,
   },
   {
-    path: '/restaurantes/novo',
-    name: 'CadastroRestaurante',
-    component: CadastroRestauranteView,
+    path: '/cadastrar-restaurante',
+    name: 'RegisterRestaurant',
+    component: RegisterRestaurantView,
   },
+  {
+    path: '/homeUsuario',
+    name: 'HomeUsuario',
+    component: HomeUsuarioView,
+  }
 ];
 
 const router = createRouter({
