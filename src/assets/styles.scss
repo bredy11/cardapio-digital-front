@@ -1,0 +1,23 @@
+// Define custom color palette
+$primary-color: #1F4788;
+$secondary-color: #4CAF50;
+
+// Override PrimeVue theme variables using CSS custom properties
+:root {
+    --p-primary-color: #{$primary-color};
+    --p-primary-color-text: #ffffff;
+
+    --p-highlight-background: #{$primary-color};
+    --p-highlight-text-color: #ffffff;
+
+    .p-button.p-button-success {
+        --p-button-background: #{$secondary-color};
+        --p-button-hover-background: #{darken($secondary-color, 10%)};
+        --p-button-border-color: #{$secondary-color};
+    }
+
+    .p-tabview .p-tabview-nav .p-tabview-header.p-highlight .p-tabview-nav-link {
+        border-color: $primary-color;
+        color: $primary-color;
+    }
+}
