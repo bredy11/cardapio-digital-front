@@ -6,7 +6,7 @@
         <div class="card p-fluid">
           <h2 class="form-title">Cadastrar Novo Restaurante</h2>
 
-          <TabView>
+          <TabView v-model:activeIndex="activeTabIndex">
             <!-- Tab 1: Main Details -->
             <TabPanel header="Detalhes Principais">
               <div class="form-section grid">
@@ -147,6 +147,7 @@ import TabPanel from 'primevue/tabpanel';
 const {
   form,
   imagePreview,
+  activeTabIndex,
   categories,
   states,
   handleImageUpload,
