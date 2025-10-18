@@ -4,6 +4,7 @@ import LoginView from '../views/usuario/LoginView.vue';
 import HomeView from '../views/HomeView.vue';
 import DashboardView from '../views/DashboardView.vue';
 import RegisterRestaurantView from '../views/restaurante/RegisterRestaurantView.vue';
+import RegisterMenuDetailsView from '../views/restaurante/RegisterMenuDetailsView.vue';
 import HomeUsuarioView from '../views/usuario/HomeUsuarioView.vue';
 
 const routes = [
@@ -36,6 +37,11 @@ const routes = [
     path: '/homeUsuario',
     name: 'HomeUsuario',
     component: HomeUsuarioView,
+  },
+  {
+    path: '/cadastrar-cardapio',
+    name: 'RegisterMenuDetails',
+    component: RegisterMenuDetailsView,
   }
 ];
 
