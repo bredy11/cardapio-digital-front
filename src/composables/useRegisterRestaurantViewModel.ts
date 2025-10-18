@@ -38,6 +38,7 @@ export function useRegisterRestaurantViewModel() {
 
   const form = reactive<RestaurantForm>({ ...initialFormState });
   const imagePreview = ref<string | null>(null);
+  const activeTabIndex = ref(0);
 
   /**
    * Handles the custom file upload event from PrimeVue's FileUpload.
@@ -125,6 +126,7 @@ export function useRegisterRestaurantViewModel() {
   return {
     form,
     imagePreview,
+    activeTabIndex,
     categories,
     states,
     handleImageUpload,

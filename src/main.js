@@ -8,6 +8,7 @@ import Aura from '@primeuix/themes/aura';
 // Icon CSS file
 import 'primeicons/primeicons.css';
 import 'primeflex/primeflex.css';
+import './assets/styles.scss';
 
 const app = createApp(App);
 

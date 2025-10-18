@@ -1,99 +1,104 @@
 <template>
   <div class="page-container">
-    <!-- Main layout using PrimeFlex Grid -->
     <div class="grid">
       <!-- Form Column (Left) -->
       <div class="col-12 md:col-7">
         <div class="card p-fluid">
           <h2 class="form-title">Cadastrar Novo Restaurante</h2>
 
-          <!-- Basic Information Section -->
-          <div class="grid form-section">
-            <div class="field col-12 md:col-6">
-              <label for="restaurantName">Nome do Restaurante</label>
-              <InputText id="restaurantName" v-model="form.nome" />
-            </div>
-            <div class="field col-12 md:col-6">
-              <label for="category">Categoria</label>
-              <Dropdown id="category" v-model="form.categoria" :options="categories" optionLabel="name" optionValue="name" placeholder="Selecione uma categoria" />
-            </div>
-            <div class="field col-12 md:col-6">
-              <label for="phone">Telefone</label>
-              <InputMask id="phone" v-model="form.telefone" mask="(99) 99999-9999" />
-            </div>
-          </div>
+          <TabView v-model:activeIndex="activeTabIndex">
+            <!-- Tab 1: Main Details -->
+            <TabPanel header="Detalhes Principais">
+              <div class="form-section grid">
+                <div class="field col-12">
+                  <label for="restaurantName">Nome do Restaurante</label>
+                  <InputText id="restaurantName" v-model="form.nome" />
+                </div>
+                <div class="field col-12 md:col-6">
+                  <label for="phone">Telefone</label>
+                  <InputMask id="phone" v-model="form.telefone" mask="(99) 99999-9999" />
+                </div>
+                <div class="field col-12 md:col-6">
+                  <label for="category">Categoria</label>
+                  <Dropdown id="category" v-model="form.categoria" :options="categories" optionLabel="name" optionValue="name" placeholder="Selecione uma categoria" />
+                </div>
+              </div>
+            </TabPanel>
 
-          <!-- Address Section -->
-          <Divider align="left" type="solid"><b>Endereço</b></Divider>
-          <div class="grid form-section">
-            <div class="field col-12 md:col-4">
-              <label for="zipcode">CEP</label>
-              <InputText id="zipcode" v-model="form.endereco.cep" />
-            </div>
-             <div class="field col-12 md:col-4">
-              <label for="state">Estado</label>
-              <Dropdown id="state" v-model="form.endereco.estado" :options="states" placeholder="Selecione" />
-            </div>
-            <div class="field col-12 md:col-4">
-              <label for="city">Cidade</label>
-              <InputText id="city" v-model="form.endereco.cidade" />
-            </div>
-            <div class="field col-12 md:col-8">
-              <label for="neighborhood">Bairro</label>
-              <InputText id="neighborhood" v-model="form.endereco.bairro" />
-            </div>
-            <div class="field col-12 md:col-4">
-              <label for="number">Número</label>
-              <InputText id="number" v-model="form.endereco.numero" />
-            </div>
-            <div class="field col-12">
-              <label for="complement">Complemento</label>
-              <InputText id="complement" v-model="form.endereco.complemento" />
-            </div>
-          </div>
-
-          <!-- Operating Hours Section -->
-          <Divider align="left" type="solid"><b>Horário de Funcionamento</b></Divider>
-          <div class="form-section">
-            <HoursInput v-model="form.horarioFuncionamento" />
-          </div>
-
-          <!-- Social Media Section -->
-          <Divider align="left" type="solid"><b>Redes Sociais e Site</b></Divider>
-            <div class="grid form-section">
+            <!-- Tab 2: Address -->
+            <TabPanel header="Endereço">
+              <div class="form-section grid">
                 <div class="field col-12 md:col-4">
-                    <label for="urlInstagram">Instagram</label>
-                    <InputText id="urlInstagram" v-model="form.urlInstagram" placeholder="ex: @meurestaurante" />
+                  <label for="zipcode">CEP</label>
+                  <InputText id="zipcode" v-model="form.endereco.cep" />
                 </div>
                 <div class="field col-12 md:col-4">
-                    <label for="urlFacebock">Facebook</label>
-                    <InputText id="urlFacebock" v-model="form.urlFacebock" placeholder="ex: /meurestaurante" />
+                  <label for="state">Estado</label>
+                  <Dropdown id="state" v-model="form.endereco.estado" :options="states" placeholder="Selecione" />
                 </div>
                 <div class="field col-12 md:col-4">
-                    <label for="urlSite">Site</label>
-                    <InputText id="urlSite" v-model="form.urlSite" placeholder="ex: www.site.com" />
+                  <label for="city">Cidade</label>
+                  <InputText id="city" v-model="form.endereco.cidade" />
                 </div>
-            </div>
+                <div class="field col-12 md:col-8">
+                  <label for="neighborhood">Bairro</label>
+                  <InputText id="neighborhood" v-model="form.endereco.bairro" />
+                </div>
+                <div class="field col-12 md:col-4">
+                  <label for="number">Número</label>
+                  <InputText id="number" v-model="form.endereco.numero" />
+                </div>
+                <div class="field col-12">
+                  <label for="complement">Complemento</label>
+                  <InputText id="complement" v-model="form.endereco.complemento" />
+                </div>
+              </div>
+            </TabPanel>
 
-          <!-- Image Upload Section -->
-          <Divider align="left" type="solid"><b>Imagem do Restaurante</b></Divider>
-          <div class="form-section">
-            <FileUpload
-              name="restaurantImage"
-              @uploader="handleImageUpload"
-              :multiple="false"
-              accept="image/*"
-              :maxFileSize="1000000"
-              chooseLabel="Escolher Imagem"
-              uploadLabel="Enviar"
-              cancelLabel="Cancelar"
-              :customUpload="true"
-            >
-              <template #empty>
-                <p>Arraste e solte a imagem aqui ou clique para selecionar.</p>
-              </template>
-            </FileUpload>
-          </div>
+            <!-- Tab 3: Hours & Media -->
+            <TabPanel header="Horários e Mídias">
+                <div class="form-section">
+                    <p class="section-title">Horário de Funcionamento</p>
+                    <HoursInput v-model="form.horarioFuncionamento" />
+                </div>
+                <div class="form-section grid">
+                    <p class="section-title col-12">Redes Sociais e Site</p>
+                    <div class="field col-12 md:col-4">
+                        <label for="urlInstagram">Instagram</label>
+                        <InputText id="urlInstagram" v-model="form.urlInstagram" placeholder="@seu-restaurante" />
+                    </div>
+                    <div class="field col-12 md:col-4">
+                        <label for="urlFacebock">Facebook</label>
+                        <InputText id="urlFacebock" v-model="form.urlFacebock" placeholder="/seu-restaurante" />
+                    </div>
+                    <div class="field col-12 md:col-4">
+                        <label for="urlSite">Site</label>
+                        <InputText id="urlSite" v-model="form.urlSite" placeholder="www.seusite.com" />
+                    </div>
+                </div>
+            </TabPanel>
+
+            <!-- Tab 4: Image -->
+            <TabPanel header="Imagem">
+              <div class="form-section">
+                <FileUpload
+                  name="restaurantImage"
+                  @select="handleImageUpload"
+                  :multiple="false"
+                  accept="image/*"
+                  :maxFileSize="1000000"
+                  chooseLabel="Escolher Imagem"
+                  :showUploadButton="false"
+                  cancelLabel="Remover"
+                  :customUpload="true"
+                >
+                  <template #empty>
+                    <p>Arraste e solte a imagem aqui ou clique para selecionar.</p>
+                  </template>
+                </FileUpload>
+              </div>
+            </TabPanel>
+          </TabView>
 
           <!-- Form Actions -->
           <div class="form-actions">
@@ -111,10 +116,14 @@
             <img :src="imagePreview || 'https://via.placeholder.com/400x200.png?text=Imagem+do+Restaurante'" alt="Preview" class="preview-image" />
             <div class="preview-info">
               <h4 class="restaurant-name">{{ form.nome || 'Nome do Restaurante' }}</h4>
-              <p class="restaurant-category">{{ form.categoria || 'Categoria' }}</p>
-              <div class="address-details" v-if="form.endereco.bairro && form.endereco.cidade">
-                 <i class="pi pi-map-marker"></i>
-                 <span>{{ form.endereco.bairro }}, {{ form.endereco.cidade }} - {{ form.endereco.estado }}</span>
+              <p v-if="form.categoria" class="restaurant-category">{{ form.categoria }}</p>
+
+              <div class="address-details" v-if="form.endereco.cep">
+                 <h5>Endereço</h5>
+                 <p>
+                    {{ form.endereco.bairro }}, {{ form.endereco.numero }} <br/>
+                    {{ form.endereco.cidade }} - {{ form.endereco.estado }}
+                 </p>
               </div>
             </div>
           </div>
@@ -132,12 +141,13 @@ import Dropdown from 'primevue/dropdown';
 import InputMask from 'primevue/inputmask';
 import FileUpload from 'primevue/fileupload';
 import Button from 'primevue/button';
-import Divider from 'primevue/divider';
+import TabView from 'primevue/tabview';
+import TabPanel from 'primevue/tabpanel';
 
-// Initialize the ViewModel
 const {
   form,
   imagePreview,
+  activeTabIndex,
   categories,
   states,
   handleImageUpload,
@@ -167,7 +177,22 @@ const {
 }
 
 .form-section {
-    margin-top: 1rem;
+  margin-top: 1rem;
+}
+
+.field {
+    margin-bottom: 1rem;
+
+    label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+    }
+}
+
+.section-title {
+    font-weight: 600;
+    font-size: 1.1rem;
     margin-bottom: 1rem;
 }
 
@@ -178,6 +203,7 @@ const {
   margin-top: 2rem;
 }
 
+/* Preview Card Styles */
 .preview-card .preview-title {
   text-align: center;
   font-size: 1.25rem;
@@ -205,14 +231,18 @@ const {
 .preview-info .restaurant-category {
   color: #6c757d;
   margin-top: 0.25rem;
+  font-style: italic;
 }
 
 .address-details {
-    margin-top: 1rem;
-    color: #495057;
-}
-
-.address-details i {
-    margin-right: 0.5rem;
+  margin-top: 1.5rem;
+  h5 {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  p {
+    margin: 0;
+    line-height: 1.4;
+  }
 }
 </style>
