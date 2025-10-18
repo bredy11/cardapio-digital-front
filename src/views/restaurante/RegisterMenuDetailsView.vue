@@ -25,8 +25,14 @@
                   <Textarea id="itemDescription" v-model="newItemForm.descricao" rows="3" />
                 </div>
                 <div class="field col-12 md:col-6">
-                  <label for="itemCategories">Categorias</label>
-                  <Chips id="itemCategories" v-model="newItemForm.categorias" separator="," placeholder="Ex: Entrada, Prato Principal" />
+                  <label for="itemCategory">Categoria</label>
+                  <Dropdown
+                    id="itemCategory"
+                    v-model="newItemForm.categoria"
+                    :options="availableCategories"
+                    placeholder="Selecione ou crie uma categoria"
+                    :editable="true"
+                  />
                 </div>
                 <div class="field col-12 md:col-6">
                   <label for="itemServes">Quantas Pessoas Serve</label>
@@ -77,9 +83,9 @@
             </div>
 
             <TabView v-else>
-              <TabPanel v-for="category in uniqueCategories" :key="category" :header="category">
+              <TabPanel v-for="category in availableCategories" :key="category" :header="category">
                 <div class="grid item-grid">
-                  <div v-for="item in menuItemsList.filter(i => i.categorias.includes(category))" :key="item.nome" class="col-12 md:col-6">
+                  <div v-for="item in getProductsByCategory(category)" :key="item.nome" class="col-12 md:col-6">
                     <div class="menu-item-card">
                       <img :src="item.imagem || 'https://via.placeholder.com/150'" :alt="item.nome" class="item-image" />
                       <div class="item-details">
@@ -105,7 +111,7 @@ import Navbar from '@/components/layouts/Navbar.vue';
 import InputText from 'primevue/inputtext';
 import InputNumber from 'primevue/inputnumber';
 import Textarea from 'primevue/textarea';
-import Chips from 'primevue/chips';
+import Dropdown from 'primevue/dropdown';
 import FileUpload from 'primevue/fileupload';
 import Button from 'primevue/button';
 import TabView from 'primevue/tabview';
@@ -115,7 +121,8 @@ const {
   newItemForm,
   itemImagePreview,
   menuItemsList,
-  uniqueCategories,
+  availableCategories,
+  getProductsByCategory,
   handleImageUpload,
   addItemToMenu,
   clearNewItemForm,

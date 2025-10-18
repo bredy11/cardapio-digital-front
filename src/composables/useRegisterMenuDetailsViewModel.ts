@@ -6,7 +6,7 @@ import { useToast } from 'primevue/usetoast';
 export interface MenuItemPayload {
   nome: string;
   descricao: string;
-  categorias: string[];
+  categoria: string; // ALTERADO: STRING (singular)
   valorTotal: number;
   quantidadeDePessoasQueServe: number;
   imagem: string | null;
@@ -17,7 +17,7 @@ export interface MenuItemPayload {
 const initialNewItemFormState: MenuItemPayload = {
   nome: '',
   descricao: '',
-  categorias: [],
+  categoria: '',
   valorTotal: 0,
   quantidadeDePessoasQueServe: 1,
   imagem: null,
@@ -66,7 +66,6 @@ export function useRegisterMenuDetailsViewModel() {
    */
   const clearNewItemForm = () => {
     Object.assign(newItemForm, initialNewItemFormState);
-    newItemForm.categorias = []; // Ensure array is reset correctly
     itemImagePreview.value = null;
     // We might need to programmatically clear the FileUpload component in the view
   };
@@ -84,8 +83,8 @@ export function useRegisterMenuDetailsViewModel() {
       toast.add({ severity: 'warn', summary: 'Valor Inválido', detail: 'O valor do item deve ser maior que zero.', life: 3000 });
       return;
     }
-    if (newItemForm.categorias.length === 0) {
-      toast.add({ severity: 'warn', summary: 'Campo Obrigatório', detail: 'Adicione pelo menos uma categoria ao item.', life: 3000 });
+    if (!newItemForm.categoria.trim()) {
+      toast.add({ severity: 'warn', summary: 'Campo Obrigatório', detail: 'Selecione ou crie uma categoria para o item.', life: 3000 });
       return;
     }
 
@@ -133,19 +132,26 @@ export function useRegisterMenuDetailsViewModel() {
    * A computed property to get all unique categories from the items list.
    * This will be used to dynamically generate the tabs in the preview.
    */
-  const uniqueCategories = computed(() => {
-    const categories = new Set<string>();
-    menuItemsList.value.forEach(item => {
-      item.categorias.forEach(cat => categories.add(cat));
-    });
+  const availableCategories = computed(() => {
+    const categories = new Set<string>(menuItemsList.value.map(item => item.categoria));
     return Array.from(categories);
   });
+
+  /**
+   * Filters the menu items list by a given category.
+   * @param category - The category to filter by.
+   */
+  const getProductsByCategory = (category: string) => {
+    return menuItemsList.value.filter(item => item.categoria === category);
+  };
 
   return {
     newItemForm,
     itemImagePreview,
     menuItemsList,
-    uniqueCategories,
+    availableCategories,
+    uniqueCategories: availableCategories, // Keep original name for compatibility if needed, or just replace
+    getProductsByCategory,
     handleImageUpload,
     addItemToMenu,
     clearNewItemForm,
