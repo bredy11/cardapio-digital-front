@@ -3,7 +3,7 @@
     <template #start>
       <router-link to="/" class="logo-container-link">
         <div class="logo-container">
-          <img src="@/assets/logo.png" alt="Logo" class="logo-img" />
+          <img src="/logo.png" alt="Logo" class="logo-img" />
           <span class="logo-text">Peça Aqui</span>
         </div>
       </router-link>
