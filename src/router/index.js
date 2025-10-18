@@ -6,8 +6,14 @@ import DashboardView from '../views/DashboardView.vue';
 import RegisterRestaurantView from '../views/restaurante/RegisterRestaurantView.vue';
 import RegisterMenuDetailsView from '../views/restaurante/RegisterMenuDetailsView.vue';
 import HomeUsuarioView from '../views/usuario/HomeUsuarioView.vue';
+import PublicMenuView from '../views/public/PublicMenuView.vue';
 
 const routes = [
+  {
+    path: '/cardapio',
+    name: 'PublicMenu',
+    component: PublicMenuView,
+  },
   {
     path: '/dashboard',
     name: 'Dashboard',
