@@ -75,9 +75,17 @@ export function useRegisterMenuDetailsViewModel() {
    * Validates and adds the item from the form to the main menu list.
    */
   const addItemToMenu = () => {
-    // Validation
-    if (!newItemForm.nome || newItemForm.valorTotal <= 0 || newItemForm.categorias.length === 0) {
-      toast.add({ severity: 'warn', summary: 'Atenção', detail: 'Preencha Nome, Valor e ao menos uma Categoria.', life: 3000 });
+    // Specific validations
+    if (!newItemForm.nome.trim()) {
+      toast.add({ severity: 'warn', summary: 'Campo Obrigatório', detail: 'Por favor, preencha o nome do item.', life: 3000 });
+      return;
+    }
+    if (newItemForm.valorTotal <= 0) {
+      toast.add({ severity: 'warn', summary: 'Valor Inválido', detail: 'O valor do item deve ser maior que zero.', life: 3000 });
+      return;
+    }
+    if (newItemForm.categorias.length === 0) {
+      toast.add({ severity: 'warn', summary: 'Campo Obrigatório', detail: 'Adicione pelo menos uma categoria ao item.', life: 3000 });
       return;
     }
 
